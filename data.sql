@@ -1,0 +1,4 @@
+-- INSERT INTO ACCOUNTS (name, address, dob) VALUES
+--   ('Albert Einstein', 'Germany', '14-03-1879'),
+--   ('Isaac Newton', 'England', '04-01-1643'),
+--   ('Charles Darwin', 'England', '12-02-1809');
