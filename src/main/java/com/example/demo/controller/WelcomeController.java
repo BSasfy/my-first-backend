@@ -25,18 +25,13 @@ public class WelcomeController {
         return "Hello!";
     }
 
-//    @GetMapping("/account")
-//         public Account account() {
-//         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//         Account newAccount = Account.builder().build();
-//         // .dob(LocalDate.parse("07/08/1991", formatter)).build();
-//         // Account newAccount = new Account(123, "Barbara", "hfiowehf", "fjioejf");
-//         System.out.println(newAccount);
-//         return newAccount;
-//    }
+    @GetMapping("/all-accounts")
+         public Iterable getAllAccounts() {
+         System.out.println(databaseHandlingRepository.findAll());
+         return databaseHandlingRepository.findAll();
+    }
 
     /**
-     * Delete this after you've read it or keep it for reference
      * ResponseEntity<Account> - this represents the whole http response with status code, headers and body.
      *
      * Next we'll look at sending a json response using Postman with a different endpoint
