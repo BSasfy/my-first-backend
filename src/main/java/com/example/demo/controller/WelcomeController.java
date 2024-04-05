@@ -1,19 +1,20 @@
-package com.example.demo;
+package com.example.demo.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.repository.DatabaseHandlingRepository;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import com.example.demo.model.Account;
 
 @RestController
 @RequestMapping("/api")
 public class WelcomeController {
-    private DatabaseHandlingRepository databaseHandlingRepository;
+    private final DatabaseHandlingRepository databaseHandlingRepository;
 
     public WelcomeController(DatabaseHandlingRepository databaseHandlingRepository) {
         this.databaseHandlingRepository = databaseHandlingRepository;
@@ -33,13 +34,18 @@ public class WelcomeController {
 //         System.out.println(newAccount);
 //         return newAccount;
 //    }
+
+    /**
+     * Delete this after you've read it or keep it for reference
+     * ResponseEntity<Account> - this represents the whole http response with status code, headers and body.
+     *
+     * Next we'll look at sending a json response using Postman with a different endpoint
+     */
     @PostMapping("/save-account")
-    public Account saveAccount() {
-        Account newAccount = new Account(123, "Barbara", "hfiowehf", LocalDate.now());
+    public ResponseEntity<Account> saveAccount() {
+        Account newAccount = new Account(123L, "Barbara", "hfiowehf", LocalDate.now());
         databaseHandlingRepository.save(newAccount);
-        return newAccount;
+        return new ResponseEntity<>(newAccount, HttpStatus.CREATED);
     }
 
 }
-
-
