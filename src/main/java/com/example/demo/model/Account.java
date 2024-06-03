@@ -22,8 +22,8 @@ import java.time.LocalDate;
 public class Account implements Serializable {
     //this tells spring that this variable will be a unique identity for this entity in the database
     @Id
-    private Long accountNumber;
+    private int accountNumber;
     private String name;
     private String address;
-    private LocalDate dob;
+    private String dob;
 }
